@@ -107,6 +107,7 @@ func populateConfig(config *Config) *Config {
 
 	return &Config{
 		GetConfigForClient:               config.GetConfigForClient,
+		AllowALPNMismatch:                config.AllowALPNMismatch,
 		Versions:                         versions,
 		HandshakeIdleTimeout:             handshakeIdleTimeout,
 		MaxIdleTimeout:                   idleTimeout,

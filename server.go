@@ -219,7 +219,8 @@ func listenUDP(addr string) (*net.UDPConn, error) {
 // A single [net.PacketConn] can only be used for a single call to Listen.
 //
 // The [tls.Config] must not be nil and must contain a certificate configuration.
-// Furthermore, it must define an application protocol using [tls.Config.NextProtos].
+// Furthermore, it must define an application protocol using [tls.Config.NextProtos],
+// unless [Config.AllowALPNMismatch] is enabled and the client advertises a protocol.
 // The [Config] may be nil, in which case the default values will be used.
 //
 // This is a convenience function. More advanced use cases should instantiate a [Transport],

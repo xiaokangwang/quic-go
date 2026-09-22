@@ -354,6 +354,9 @@ var newConnection = func(
 	if s.qlogger != nil {
 		s.qlogTransportParameters(params, protocol.PerspectiveServer, false)
 	}
+	if conf.AllowALPNMismatch {
+		tlsConf = setupTLSConfigForALPNMismatch(tlsConf)
+	}
 	cs := handshake.NewCryptoSetupServer(
 		clientDestConnID,
 		conn.LocalAddr(),

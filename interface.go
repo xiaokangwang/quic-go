@@ -103,6 +103,13 @@ type Config struct {
 	// GetConfigForClient is called for incoming connections.
 	// If the error is not nil, the connection attempt is refused.
 	GetConfigForClient func(info *ClientInfo) (*Config, error)
+	// AllowALPNMismatch allows the server to select the client's first advertised
+	// application protocol when none match tls.Config.NextProtos.
+	// If there is a match, the server's protocol preference is preserved.
+	// It has no effect when the client doesn't advertise any application protocols.
+	// The application must be able to handle the selected protocol.
+	// Only valid for the server.
+	AllowALPNMismatch bool
 	// The QUIC versions that can be negotiated.
 	// If not set, it uses all versions available.
 	Versions []Version
